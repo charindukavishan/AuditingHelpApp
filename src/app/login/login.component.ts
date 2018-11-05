@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         res => {
           this.service.setToken(res['token']);
           this.router.navigateByUrl('/userprofile');
-          //this.state.state=true;
+          this.state.state=true;
         },
         err => {
           this.serverErrorMessages = err.error.message;

@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ResetpwComponent } from './resetpw/resetpw.component';
 import { NewpwComponentComponent } from './newpw-component/newpw-component.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NewpwComponentComponent } from './newpw-component/newpw-component.compo
     LoginComponent,
     RegistrationComponent,
     ResetpwComponent,
-    NewpwComponentComponent
+    NewpwComponentComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { ResetpwComponent } from './resetpw/resetpw.component';
 import { NewpwComponentComponent } from './newpw-component/newpw-component.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 export const appRoutes: Routes = [
@@ -14,12 +16,14 @@ export const appRoutes: Routes = [
   // 6th Route
 // { path: 'reg',  component: RegistraionComponent },
 {path: 'login', component: LoginComponent,},
-// {path: 'userprofile', component: UserProfileComponent,canActivate:[AuthGuard],children:[
+ {path: 'userprofile', component: UserProfileComponent,canActivate:[AuthGuard]
+//,children:[
 //   {path: 'userHome', component: UserHomeComponent},
 //   {path: 'settings', component: SettingsComponent},
 //   {path: 'gallery', component: GalleryComponent},
 //   { path: '',   redirectTo: 'userHome', pathMatch: 'full' },
-// ]},
+// ]
+},
 {path: 'resetpassword', component: ResetpwComponent},
 {path: 'newpassword/:token', component: NewpwComponentComponent},
 
