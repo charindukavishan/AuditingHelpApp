@@ -1,0 +1,39 @@
+
+<section  style="background:#efefe9;">
+    
+  <div class="container">
+      
+      <div class="b">
+          
+              <form #resetpw="ngForm" (ngSubmit)="resetpw.valid && onSubmit()">
+                <div class="tab-pane fade in active">
+                  <div class='row'>
+                    <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                      <div class="form-group">
+                        <label class="control-label" for="newpassword">New newPassword</label>  
+                        <input class="form-control input-md" #newpassword="ngModel" pattern=".{6,}" required id="newpassword" name="newpassword" type="password" placeholder="Create newpassword" [(ngModel)]="model.newpassword">   
+                        <div class="alert alert-danger" [hidden]="newpassword.valid">Password must be at least 6 characters long</div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" for="confirmnewPassword">Repeat newPassword</label>  
+                      <input  class="form-control input-md" #confirmnewPassword="ngModel" required id="confirmnewPassword" name="confirmnewPassword" type="password" placeholder="Repeat newpassword" [(ngModel)]="model.confirmnewPassword">
+                      <div class="alert alert-danger" *ngIf="newpassword.value!=confirmnewPassword.value">Password not match</div>
+                  </div>
+                  <div>
+                    <label class="validation-message">{{msg}}</label>
+                  </div>
+                      <input type="submit" [disabled]="!resetpw.valid || (newpassword.value!=confirmnewPassword.value)" class="btn btn-success btn-outline-rounded btn-info " value="confirm">
+                    </div>
+                  </div>
+                </div>
+
+              </form>  
+              
+
+          </div>
+          <!-- End Content Area -->
+      </div>
+
+      
+  
+</section>

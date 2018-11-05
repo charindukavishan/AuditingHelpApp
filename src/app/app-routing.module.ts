@@ -1,10 +1,33 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from './login/login.component';
+import { ResetpwComponent } from './resetpw/resetpw.component';
+import { NewpwComponentComponent } from './newpw-component/newpw-component.component';
 
-const routes: Routes = [];
+
+export const appRoutes: Routes = [
+
+
+  // 1st Route
+{path: 'reg',  component: RegistrationComponent},
+  // 6th Route
+// { path: 'reg',  component: RegistraionComponent },
+{path: 'login', component: LoginComponent,},
+// {path: 'userprofile', component: UserProfileComponent,canActivate:[AuthGuard],children:[
+//   {path: 'userHome', component: UserHomeComponent},
+//   {path: 'settings', component: SettingsComponent},
+//   {path: 'gallery', component: GalleryComponent},
+//   { path: '',   redirectTo: 'userHome', pathMatch: 'full' },
+// ]},
+{path: 'resetpassword', component: ResetpwComponent},
+{path: 'newpassword/:token', component: NewpwComponentComponent},
+
+{ path: '**', component: LoginComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

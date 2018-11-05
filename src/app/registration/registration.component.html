@@ -1,0 +1,74 @@
+
+<section  style="background:#efefe9;">
+    
+  <div class="container">
+      
+      <div class="b">
+          
+              <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+                <div class="tab-pane fade in active">
+                  <div class="row">
+                    <div class='col-xs-12 col-sm-6'>
+                        <div class="form-group">
+                            <label class="control-label" for="firstname">First Name</label>  
+                            <input class="form-control input-md" #firstname="ngModel" required id="firstname" name="firstname" type="text" placeholder="First Name" [(ngModel)]="personal.firstName">   
+                            <div class="alert alert-danger" [hidden]="firstname.valid">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class='col-xs-12 col-sm-6'>
+                        <div class="form-group">
+                            <label class="control-label" for="lastname">Last Name</label>  
+                            <input class="form-control input-md" #lastname="ngModel" required id="lastname" name="lastname" type="text" placeholder="Last Name" [(ngModel)]="personal.lastName">
+                            <div class="alert alert-danger"  [hidden]="lastname.valid">Last Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="email">Email</label>
+                    <input class="form-control input-md" #email="ngModel" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" id="email" name="email" type="text" placeholder="Email" [(ngModel)]="personal.email">
+                    <div class="alert alert-danger" [hidden]="email.valid">Email is required and must be valid</div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="tel">Tel</label>
+                  <input class="form-control input-md" #tel="ngModel" required id="tel" name="tel" type="text" placeholder="Tel" [(ngModel)]="personal.tel">
+                  <div class="alert alert-danger" [hidden]="tel.valid">Tel is required</div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label" for="nic">NIC</label>
+                  <input class="form-control input-md" #nic="ngModel" required id="nic" name="nic" type="text" placeholder="NIC" [(ngModel)]="personal.nic">
+                  <div class="alert alert-danger" [hidden]="nic.valid">NIC is required</div>
+              </div>
+              <div class="row">
+                  <div class='col-xs-12 col-sm-6'>
+                      <div class="form-group">
+                          <label class="control-label" for="password">Create Password</label>  
+                          <input class="form-control input-md" #password="ngModel" pattern=".{6,}" required id="password" name="password" type="password" placeholder="Create password" [(ngModel)]="personal.password">   
+                          <div class="alert alert-danger" [hidden]="password.valid">Password must be at least 6 characters long</div>
+                      </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                      <div class="form-group">
+                          <label class="control-label" for="confirmPassword">Repeat Password</label>  
+                          <input  class="form-control input-md" #confirmPassword="ngModel" required id="confirmPassword" name="confirmPassword" type="password" placeholder="Repeat password" [(ngModel)]="personal.confirmPassword">
+                          <div class="alert alert-danger" *ngIf="password.value!=confirmPassword.value">Password not match</div>
+                      </div>
+                  </div>
+              </div>
+                    
+                <div class="form-group text-center">
+                    <button class="btn btn-success btn-outline-rounded btn-info " [disabled]="!personalForm.valid || (password.value!=confirmPassword.value)"  (click)="save()"> Submit <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
+                </div>
+                </div>
+
+              </form>  
+              <div class="alert" *ngIf="serverErrorMessages">
+                {{serverErrorMessages}}
+              </div>
+
+          </div>
+          <!-- End Content Area -->
+      </div>
+
+      
+  
+</section>

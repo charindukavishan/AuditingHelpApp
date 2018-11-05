@@ -1,0 +1,11 @@
+.b{
+    width: 90%;
+    margin: 6px auto;
+    height: 800px;
+    background: #fff;
+    /*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
+}
+.container{
+    width: 100%;
+    height: 900px;
+}
