@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
-import { AppComponent } from '../app.component';
-import {RegserviceService } from '../servers/regservice.service';
 
+import {RegserviceService } from '../servers/regservice.service';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegserviceService } from '../servers/regservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -17,7 +18,7 @@ export class RegistrationComponent implements OnInit {
     confirmPassword:''
 
   }
-  constructor(private reg:RegserviceService) { }
+  constructor(private reg:RegserviceService,public route:Router) { }
 
   ngOnInit() {
   }
@@ -26,7 +27,9 @@ export class RegistrationComponent implements OnInit {
     this.reg.storedetails(this.personal)
             .subscribe(
                 (response)=>{if(response){
-                    this.serverErrorMessages="You Now Park Owner!"
+                    this.serverErrorMessages="Registration Succsesfull";
+                    this.route.navigateByUrl('/login');
+
                 }
                 
                 }
