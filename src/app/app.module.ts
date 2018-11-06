@@ -14,6 +14,8 @@ import { RegserviceService } from './servers/regservice.service';
 import { AuthGuard } from './auth/auth.guard';
 import { HttpModule } from '@angular/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     RegistrationComponent,
     ResetpwComponent,
     NewpwComponentComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FileUploadComponent,
+    FileSelectDirective
+    
   ],
   imports: [
     BrowserModule,
