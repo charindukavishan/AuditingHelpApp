@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 
 import {RegserviceService } from '../servers/regservice.service';
 import { AppComponent } from '../app.component';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,10 +18,13 @@ export class LoginComponent implements OnInit {
     email :'',
     password:''
   };
+  isAdmin:boolean;
+  roll='';
   serverErrorMessages: string;
   ngOnInit() {
     if(this.service.isLoggedIn())
-    this.router.navigateByUrl('/userprofile');
+    this.router.navigateByUrl('/admin');
+    this.isAdmin=false;
   }
  
   
@@ -28,6 +32,9 @@ export class LoginComponent implements OnInit {
       this.service.login(form.value).subscribe(
         res => {
           this.service.setToken(res['token']);
+        this.roll=res['role'];
+        if(this.roll=="admin")
+        this.isAdmin=true;
           this.router.navigateByUrl('/userprofile');
           this.state.state=true;
         },

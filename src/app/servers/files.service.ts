@@ -9,11 +9,15 @@ export class FilesService {
   constructor(private http: Http) { }
 
     downloadPDF(filename, filetype): any {
-    return this.http.get('http://127.0.0.1:3001/file/' + filename,
+    return this.http.get('http://localhost:3000/api/file/' + filename,
     { responseType: ResponseContentType.Blob });
   }
 
-  showFileNames() {
-    return this.http.get('http://127.0.0.1:3001/files');
+  showFileNames(id) {
+    return this.http.get('http://localhost:3000/api/files/'+id);
+  }
+
+  recevefile(id){
+    return this.http.get('http://localhost:3000/api/rfiles/'+id);
   }
 }

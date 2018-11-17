@@ -9,13 +9,17 @@ import { Router } from "@angular/router";
 export class UserProfileComponent implements OnInit {
 
   userDetails;
+  userId='';
   constructor(private service: RegserviceService, private router: Router) { }
 
   ngOnInit() {
     this.service.getUserProfile().subscribe(
       res => {
         this.userDetails = res['user'];
-        console.log(res);
+        this.userId=this.userDetails._id;
+        this.service.setid(this.userDetails._id);
+        // console.log(this.userId);
+        console.log(this.userDetails)
       },
       err => { 
         console.log(err);

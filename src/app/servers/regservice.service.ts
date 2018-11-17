@@ -43,13 +43,39 @@ export class RegserviceService {
    setToken(token: string) {
      localStorage.setItem('token', token);
    }
- 
+ setid(id:string){
+  localStorage.setItem('id',id);
+ }
+
+ getid(){
+  return localStorage.getItem('id');
+ }
+
+ deleteid(){
+  localStorage.removeItem('id');
+ }
+
+ setuser(name:string,id:string){
+  localStorage.setItem('usernic',name);
+  localStorage.setItem('userid',id);
+ }
+
+ getuser(){
+  return localStorage.getItem('usernic');
+ }
+ getuserid(){
+  return localStorage.getItem('userid');
+ }
+ deleteuser(){
+  localStorage.removeItem('usernic');
+ }
    getToken() {
      return localStorage.getItem('token');
    }
  
    deleteToken() {
      localStorage.removeItem('token');
+     this.deleteid();
    }
  
    getUserPayload() {
@@ -69,7 +95,9 @@ export class RegserviceService {
      else
        return false;
    }
-
+getusers(){console.log('getuser')
+  return this.http.get(this.url + '/users');
+}
 
    newpost(post){
      return this.http.post(this.url+'/newPost',post);

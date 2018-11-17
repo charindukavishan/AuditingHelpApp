@@ -18,6 +18,7 @@ export class RegistrationComponent implements OnInit {
     confirmPassword:''
 
   }
+  res:boolean;
   constructor(private reg:RegserviceService,public route:Router) { }
 
   ngOnInit() {
@@ -27,9 +28,13 @@ export class RegistrationComponent implements OnInit {
     this.reg.storedetails(this.personal)
             .subscribe(
                 (response)=>{if(response){
+                 this.res=response['status'];
+                  if(!this.res){
+                    this.serverErrorMessages='Your email is already exists'
+                  }else{
                     this.serverErrorMessages="Registration Succsesfull";
                     this.route.navigateByUrl('/login');
-
+                  }
                 }
                 
                 }

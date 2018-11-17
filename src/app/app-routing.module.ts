@@ -7,6 +7,13 @@ import { NewpwComponentComponent } from './newpw-component/newpw-component.compo
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AuthGuard } from './auth/auth.guard';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AllusersComponent } from './admin-profile/allusers/allusers.component';
+import { SentdocsComponent } from './admin-profile/sentdocs/sentdocs.component';
+import { ReceiveComponent } from './user-profile/receive/receive.component';
+import { ReceivedComponent } from './admin-profile/received/received.component';
+import { MessagesComponent } from './admin-profile/messages/messages.component';
+import { AdminuploadsComponent } from './admin-profile/adminuploads/adminuploads.component';
 
 
 export const appRoutes: Routes = [
@@ -17,11 +24,20 @@ export const appRoutes: Routes = [
   // 6th Route
 // { path: 'reg',  component: RegistraionComponent },
 {path: 'login', component: LoginComponent,},
+{path:'admin', component:AdminProfileComponent,canActivate:[AuthGuard],
+children:[
+  {path:'allusers',component:AllusersComponent},
+  {path:'sentdocs',component:SentdocsComponent},
+  {path:'received',component:ReceivedComponent},
+  {path:'messages',component:MessagesComponent},
+  {path:'upload',component:AdminuploadsComponent},
+  { path: '**',   redirectTo: 'allusers', pathMatch: 'full' },
+]},
  {path: 'userprofile', component: UserProfileComponent,canActivate:[AuthGuard]
 ,children:[
   {path: 'userHome', component: FileUploadComponent},
 //   {path: 'settings', component: SettingsComponent},
-//   {path: 'gallery', component: GalleryComponent},
+  {path: 'gallery', component: ReceiveComponent},
   { path: '',   redirectTo: 'userHome', pathMatch: 'full' },
 ]
 },
