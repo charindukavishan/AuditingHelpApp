@@ -1,0 +1,23 @@
+<div class="container">
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>File Name</th>
+          <th>Sent To</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of files">
+          <td>{{ file.originalname }}</td>
+          <td>{{ file.username }}</td>
+          <td>{{file.time | date:'MMM dd, yyyy'}}</td>
+      <td>{{ file.time | date:'hh:mm' }}</td>
+      <!-- <td>{{ file.username }}</td> -->
+          <td><button class="btn btn-primary button" (click)="downloadPdf(file.filename, file.contentType)">Download</button></td>
+        </tr>   
+      </tbody>
+    </table>
+</div>

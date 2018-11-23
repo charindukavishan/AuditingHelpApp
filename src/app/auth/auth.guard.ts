@@ -3,7 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angul
 import { Observable } from 'rxjs/Observable';
 import{RegserviceService} from '../servers/regservice.service';
 import { Router } from "@angular/router";
-
+import decode from 'jwt-decode';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

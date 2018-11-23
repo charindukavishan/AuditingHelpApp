@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import {RegserviceService } from '../servers/regservice.service';
 import { AppComponent } from '../app.component';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import decode from 'jwt-decode';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,11 +33,16 @@ export class LoginComponent implements OnInit {
       this.service.login(form.value).subscribe(
         res => {
           this.service.setToken(res['token']);
-        this.roll=res['role'];
-        if(this.roll=="admin")
-        this.isAdmin=true;
-          this.router.navigateByUrl('/userprofile');
-          this.state.state=true;
+          const token =this.service.getToken();
+          const tokenPayload = decode(token);
+          console.log(tokenPayload.role);
+        if(tokenPayload.role == "admin"){
+         this.router.navigateByUrl('/admin');
+          this.state.state=true;}
+          else{
+            this.router.navigateByUrl('/userprofile');
+            this.state.state=true;
+          }
         },
         err => {
           this.serverErrorMessages = err.error.message;

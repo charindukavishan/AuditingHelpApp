@@ -9,7 +9,7 @@ export class FilesService {
   constructor(private http: Http) { }
 
     downloadPDF(filename, filetype): any {
-    return this.http.get('http://localhost:3000/api/file/' + filename,
+    return this.http.get('http://localhost:3000/api/adminfile/' + filename,
     { responseType: ResponseContentType.Blob });
   }
 

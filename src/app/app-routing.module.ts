@@ -14,6 +14,7 @@ import { ReceiveComponent } from './user-profile/receive/receive.component';
 import { ReceivedComponent } from './admin-profile/received/received.component';
 import { MessagesComponent } from './admin-profile/messages/messages.component';
 import { AdminuploadsComponent } from './admin-profile/adminuploads/adminuploads.component';
+import { RoleGuardServiceGuard } from './auth/role-guard-service.guard';
 
 
 export const appRoutes: Routes = [
@@ -24,7 +25,9 @@ export const appRoutes: Routes = [
   // 6th Route
 // { path: 'reg',  component: RegistraionComponent },
 {path: 'login', component: LoginComponent,},
-{path:'admin', component:AdminProfileComponent,canActivate:[AuthGuard],
+{path:'admin', component:AdminProfileComponent,canActivate:[RoleGuardServiceGuard],data: { 
+  expectedRole: 'admin'
+} ,
 children:[
   {path:'allusers',component:AllusersComponent},
   {path:'sentdocs',component:SentdocsComponent},
