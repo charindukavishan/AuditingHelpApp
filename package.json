@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "typescript": "~3.1.1",
-    "postinstall": "ng build --aot -prod"
+    "preinstall": "npm install -g http-server",
+    "postinstall": "ng build && mv dist/* ."
   },
   "engines": {
     "node": "9.6.1",
