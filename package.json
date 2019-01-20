@@ -10,6 +10,10 @@
     "e2e": "ng e2e",
     "typescript": "~3.1.1"
   },
+  "engines": {
+    "node": "9.6.1",
+    "npm": "5.6.0"
+},
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.0.0",
