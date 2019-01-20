@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "typescript": "~3.1.1",
-    "preinstall": "npm install -g http-server",
+    
     "postinstall": "ng build && mv dist/* ."
   },
   "engines": {
