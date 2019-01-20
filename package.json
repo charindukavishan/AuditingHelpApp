@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "typescript": "~3.1.1"
+    "typescript": "~3.1.1",
+    "postinstall": "ng build --aot -prod"
   },
   "engines": {
     "node": "9.6.1",
